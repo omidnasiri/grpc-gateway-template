@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+import "bar/rpc_bar.proto";
+import "google/protobuf/empty.proto";
+import "google/api/annotations.proto";
+
+package bar.service.v1;
+option go_package = "./bar/pb";
+
+service BarService{
+  rpc GetMessages(google.protobuf.Empty) returns (Bar){
+    option (google.api.http) = {
+      get: "/api/bar"
+      additional_bindings: {
+        get: "/bar"
+      }
+    };
+  }
+}

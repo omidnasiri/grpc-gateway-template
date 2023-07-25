@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+import "foo/rpc_foo.proto";
+import "google/api/annotations.proto";
+
+package foo.service.v1;
+option go_package = "./foo/pb";
+
+service FooService{
+  rpc PostMessage(Foo) returns (Foo) {
+    option (google.api.http) = {
+      post: "/api/foo"
+      additional_bindings: {
+        post: "/foo"
+        body: "*"
+      }
+      body: "*"
+    };
+  }
+}

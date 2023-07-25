@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package bar.service.v1;
+option go_package = "./bar/pb";
+
+message Bar {
+  repeated Message messages = 1 [json_name = "messages"];
+}
+
+message Message {
+  uint32 Id = 1 [json_name = "id"];
+  string Title = 2 [json_name = "title"];
+}

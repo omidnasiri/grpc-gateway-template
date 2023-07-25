@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+import "validate/validate.proto";
+
+package foo.service.v1;
+option go_package = "./foo/pb";
+
+message Foo {
+  uint32 Id = 1 [json_name = "id"];
+  string Title = 2 [json_name = "title", (validate.rules).string.min_len = 3];
+}
